@@ -70,7 +70,7 @@ A aplicação estará disponível em: `http://localhost:5000`
 
 A aplicação também está disponível online para uso imediato:
 
-🔗 **Link de Produção**: [desafio-autou.vercel.app](https://desafio-autou.vercel.app)
+🔗 **Link de Produção**: [desafio-autou.vercel.app](https://desafio-auto-u-rho.vercel.app)
 
 ## 📖 Como Utilizar
 
