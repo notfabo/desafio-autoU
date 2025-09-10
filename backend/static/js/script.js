@@ -71,6 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function resetFileInput() {
+        inputFile.value = '';
+        dropZoneFilled.classList.add('hidden');
+        dropZoneEmpty.classList.remove('hidden');
+        dropZone.classList.remove('drop-zone--filled');
+    }
+
+
     function handleFileSelection() {
         if (inputFile.files.length > 0) {
             const file = inputFile.files[0];
@@ -164,6 +172,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    removeFileBtn.addEventListener('click', resetFileInput);
+
+    textArea.addEventListener('input', () => {
+        if (textArea.value.trim() !== '') {
+            resetFileInput();
+        }
+    });
+
     resetBtn.addEventListener('click', () => {
         resultsView.classList.add('hidden');
         conteudoAnalisadoWrapper.classList.add('hidden');
@@ -177,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dropZoneFilled.classList.add('hidden');
         dropZoneEmpty.classList.remove('hidden');
         dropZone.classList.remove('drop-zone--filled');
+        resetFileInput();
     });
 
     selectFileBtn.addEventListener('click', () => inputFile.click());
