@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador Inteligente de Emails</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/icon.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div id="landing-view">
+            <header class="header">
+                <img src="{{ url_for('static', filename='img/icon.png') }}" alt="Ícone de Cérebro" class="logo-icon">
+                <h1>Classificador Inteligente de Emails</h1>
+                <p class="subtitle">Utilize inteligência artificial para classificar emails automaticamente e gerar
+                    respostas personalizadas</p>
+            </header>
+
+            <section class="features">
+                <div class="feature-card">
+                    <i class="fas fa-bolt icon-blue"></i>
+                    <h3>Análise Rápida</h3>
+                    <p>Classificação automática em segundos usando IA avançada</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain icon-purple"></i>
+                    <h3>IA Inteligente</h3>
+                    <p>Algoritmos de NLP para compreensão contextual precisa</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-lock icon-orange"></i>
+                    <h3>Seguro & Confiável</h3>
+                    <p>Processamento seguro de dados corporativos</p>
+                </div>
+            </section>
+
+            <div class="start-button-container">
+                <button type="button" id="start-app-btn" class="btn-primary btn-large">Analisar seu Email</button>
+            </div>
+        </div>
+
+        <main id="main-app-view" class="hidden">
+
+            <div id="input-view" class="card email-input-card">
+                <div aria-live="polite" class="warning-alert"></div>
+                <h2 id="input-title">Envie seu Email para Análise</h2>
+
+                <div id="form-wrapper">
+                    <form id="email-form">
+                        <div class="drop-zone" id="drop-zone">
+                            <input type="file" id="arquivo_email" name="arquivo_email" accept=".txt,.pdf"
+                                class="drop-zone__input">
+                            <div id="drop-zone-empty">
+                                <div class="drop-zone__prompt">
+                                    <i class="fas fa-file-import upload-icon"></i>
+                                    <p><b>Arraste seus arquivos aqui</b></p>
+                                    <p>ou clique para selecionar arquivos .txt ou .pdf</p>
+                                    <button type="button" class="btn-secondary" id="select-file-btn">Selecionar Arquivo</button>
+                                </div>
+                            </div>
+                            <div id="drop-zone-filled" class="hidden">
+                                <i id="file-icon" class="fas fa-file-alt filled-icon"></i>
+                                <p class="filled-title">Arquivo pronto para análise:</p>
+                                <span id="filled-file-name" class="file-name"></span>
+                                <button type="button" id="remove-file-btn" class="btn-remove">
+                                    <i class="fas fa-times"></i> Remover
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="separator-line">OU</div>
+
+                        <div class="form-group text-area-group">
+                            <label for="texto_email">
+                                <i class="fas fa-comment-alt"></i> Ou digite o conteúdo do email
+                            </label>
+                            <textarea id="texto_email" name="texto_email" rows="10"
+                                placeholder="Cole aqui o conteúdo do email que deseja classificar..."></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="btn-primary">Analisar Email</button>
+                    </form>
+                </div>
+
+                <div id="conteudo-analisado-wrapper" class="hidden">
+                    <p class="analisado-label">Foi analisado o seguinte conteúdo:</p>
+                    <div id="conteudo-analisado-box">
+                    </div>
+                    <button type="button" id="reset-btn" class="btn-secondary">Analisar Outro Email</button>
+                </div>
+            </div>
+
+            <div id="results-view" class="card result-card hidden">
+                <div id="loading-spinner" class="spinner-container hidden">
+                    <div class="spinner"></div>
+                    <p>Analisando o email com IA...</p>
+                </div>
+                <div id="resultado-conteudo" class="hidden">
+                    <h2>Resultado da Análise</h2>
+                    <p><strong>Classificação:</strong> <span id="classificacao" class="result-badge"></span></p>
+                    <p><strong>Sugestão de Resposta:</strong></p>
+                    <div id="sugestao" class="sugestao-box"></div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
